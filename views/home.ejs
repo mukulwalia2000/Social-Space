@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="/css/home.css" />
+<script src="/js/home.js"></script>
+
+<section id="feed-posts">
+    
+    <% if(locals.user){ %>
+    <main class="my-form">
+        <div class="container">
+            <div class="row justify-content-left">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">Add new Post</div>
+                        <div class="card-body">
+                            <form name="my-form" action="/posts/create" id="new-post-form" method="post">
+
+                                <div class="form-group">
+
+                                    <textarea class="form-control" placeholder="Write your post here..."
+                                        id="create-post" name="content" rows="2" required></textarea>
+                                </div>
+
+                                <div class="col-md-2 offset-md-4 float-right">
+                                    <input type="submit" class="btn btn-warning text-light" value="Post">
+                                </div>
+                                
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+                <%- include ("_user_friends") %>
+            </div>
+        </div>
+        </div>
+    </main>
+    <% } %>
+    
+    <div class="container post-list-container">
+        <% for(post of posts){ %>
+            <%- include ("_post") %>
+        <% } %>
+        
+    </div>
+</section>
+<script defer src="/js/home_post.js"></script>
